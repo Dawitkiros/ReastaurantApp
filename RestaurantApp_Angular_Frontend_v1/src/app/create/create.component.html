@@ -1,0 +1,173 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">Create Menu</h5>
+        </div>
+        <div class="card-body">
+          <form #loginForm="ngForm">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="menuId" class="form-label">Menu ID:</label>
+                <input
+                  type="text"
+                  name="menuId"
+                  id="menuId"
+                  class="form-control"
+                  placeholder="Menu Id"
+                  ngModel
+                  required
+                  pattern=""
+                  [(ngModel)]="menuForm.menuId"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="menuName" class="form-label">Menu Name:</label>
+                <input
+                  type="text"
+                  name="menuName"
+                  id="menuName"
+                  class="form-control"
+                  placeholder="Menu Name"
+                  ngModel
+                  required
+                  pattern="[a-zA-Z]+$"
+                  [(ngModel)]="menuForm.menuName"
+                />
+                <div class="invalid-feedback">Please enter a name.</div>
+              </div>
+              <div class="col-12">
+                <label for="menuDescription" class="form-label"
+                  >Menu Description:</label
+                >
+                <input
+                  type="text"
+                  name="menuDescription"
+                  id="menuDescription"
+                  class="form-control"
+                  placeholder="Description"
+                  ngModel
+                  required
+                  [(ngModel)]="menuForm.menuDescription"
+                />
+              </div>
+              <div class="col-12">
+                <label for="menuImage" class="form-label">Menu Image:</label>
+                <div>
+                  <img
+                    *ngIf="uploadedImageUrl!"
+                    [src]="uploadedImageUrl"
+                    width="200px"
+                    height="200px"
+                  />
+                </div>
+
+                <div>
+                  <input
+                    name="menuImageUpdate"
+                    type="file"
+                    class="form-control"
+                    (change)="onImageUpload($event)"
+                    accept="*"
+                  />
+                </div>
+              </div>
+              <div>
+                <button
+                class="btn"
+                  *ngIf="!extendedToCategoryForm"
+                  (click)="extendToCategoryForm()"
+                >
+                  Add Categorie
+                </button>
+                <div *ngIf="extendedToCategoryForm" class="category">
+                  <div class="row g-3">
+                    <div class="col-6">
+                      <label for="categoryId" class="form-label"
+                        >category ID</label
+                      >
+                      <input
+                        type="text"
+                        name="CategoryId"
+                        id="CategoryId"
+                        class="form-control"
+                        placeholder=">60"
+                        ngModel
+                        required
+                        [(ngModel)]="menuForm.category.categoryId"
+                      />
+                    </div>
+                    <div class="col-6">
+                      <label for="categoryName" class="form-label"
+                        >category Name</label
+                      >
+                      <input
+                        type="text"
+                        name="CategoryName"
+                        id="CategoryName"
+                        class="form-control"
+                        placeholder="Italian"
+                        ngModel
+                        required
+                        [(ngModel)]="menuForm.category.categoryName"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <button
+                class="btn"
+                  *ngIf="extendedToCategoryForm && !extendedToDishForm"
+                  (click)="extendToDishForm()"
+                >
+                  Add Dish
+                </button>
+              </div>
+              <div *ngIf="extendedToDishForm" class="category">
+                <div class="row g-3">
+                  <div class="col-6">
+                    <label for="dishId" class="form-label">Dish ID</label>
+                    <input
+                      type="text"
+                      name="DishId"
+                      id="DishId"
+                      class="form-control"
+                      placeholder=">60"
+                      ngModel
+                      required
+                      [(ngModel)]="menuForm.category.dish.dishId"
+                    />
+                  </div>
+                  <div class="col-6">
+                    <label for="dishName" class="form-label"
+                      >Dish Name</label
+                    >
+                    <input
+                      type="text"
+                      name="DishName"
+                      id="DishName"
+                      class="form-control"
+                      placeholder="Italian"
+                      ngModel
+                      required
+                      [(ngModel)]="menuForm.category.dish.dishName"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  (click)="createMenu()"
+                >
+                  Create Menu
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

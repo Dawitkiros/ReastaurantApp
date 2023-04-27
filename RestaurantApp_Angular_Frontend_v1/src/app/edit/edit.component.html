@@ -1,0 +1,67 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title">Edit Menu</h5>
+  </div>
+  <div class="card-body">
+    <form #loginForm="ngForm" class="row g-3">
+      <div class="col-md-6">
+        <label for="menuId" class="form-label">Menu ID:</label>
+        <input
+          type="text"
+          name="menuId"
+          id="menuId"
+          class="form-control"
+          placeholder="Menu Id"
+          ngModel
+          required
+          pattern=""
+          disabled
+          [(ngModel)]="menuForm.menuId"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="menuName" class="form-label">Menu Name:</label>
+        <input
+          type="text"
+          name="menuName"
+          id="menuName"
+          class="form-control"
+          placeholder="Menu Name"
+          ngModel
+          required
+          [(ngModel)]="menuForm.menuName"
+          pattern="[a-zA-Z]+$"
+        />
+        <div class="invalid-feedback">
+          Please enter a valid username.
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="menuDescription" class="form-label">Menu Description:</label>
+        <input
+          type="text"
+          name="menuDescription"
+          id="menuDescription"
+          class="form-control"
+          placeholder="Description"
+          ngModel
+          [(ngModel)]="menuForm.menuDescription"
+          required
+        />
+      </div>
+      <div class="col-12">
+        <label for="menuImage" class="form-label">Menu Image:</label>
+        <img
+          name="menuImage"
+          id="menuImage"
+          [src]="menuForm.menuImage | blobToUrl"
+          class="img-fluid"
+        />
+        <input name="menuImageUpdate" type="file" class="form-control" />
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary" (click)="updateMenu(menuForm.menuId)">Edit</button>
+      </div>
+    </form>
+  </div>
+</div>

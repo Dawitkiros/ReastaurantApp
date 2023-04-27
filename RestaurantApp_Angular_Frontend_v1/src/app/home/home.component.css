@@ -1,0 +1,38 @@
+.overlay {
+    position: absolute; 
+    left: 0;
+    top: 0;
+  }
+
+.landing{
+
+}
+
+.jumbotron {
+    background-image:  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),  url("../../assets/images/food.jpg");
+    background-size: cover;
+    background-blend-mode: darken;
+    height: 100vh;
+    background-position: center;
+    
+}
+.jumbotron-text {
+    margin-left: 10%;
+    color: aliceblue;
+
+}
+
+.heading {
+   font-size: 8rem;
+   text-align: center;
+}
+.lead{
+    text-align: center;
+}
+.t {
+    text-align: center;
+}
+#btn{
+    text-align: center;
+    border: 2px solid white;
+}

@@ -1,0 +1,41 @@
+<div class="menu-center">
+  <input
+    class="search-input"
+    type="text"
+    [(ngModel)]="searchTerm"
+    placeholder="Search menu..."
+  /><br />
+  <br />
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let menu of menus | menuSearch : searchTerm">
+      <div class="card">
+        <!-- <img [src]="menus[0].menuImage | blobToUrl" alt="{{menus[0].menuName}} Image" class="card-img-top" alt="Palm Springs Road"/> -->
+        <img
+          [src]="menu.menuImage | blobToUrl"
+          alt="{{ menu.menuName }} Image"
+        />
+        <div class="card-body">
+          <div class="card-body">
+            <!-- <img src = "../../assets/images/food.jpg" height= "200px" width="300px"> -->
+            <div class="card-text">
+              <h5>{{ menu.category.dish.dishName }}</h5>
+              <h6>{{ menu.category.dish.dishPrice }}</h6>
+              <div class="card-text">{{ menu.category.categoryName }}</div>
+              <div class="card-text">{{ menu.category.dish.dishDesc }}</div>
+              <div class="card-text">{{ menu.category.dish.dishNature }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button [disabled]="pageNumber == 1" (click)="prevPage()">prev</button>
+      <button [disabled]="pageNumber == 5" type="button" (click)="nextPage()">
+        next
+      </button>
+      <button class="button" (click)="changePageSize(2)" [value]="2">2</button>
+      <button class="button" (click)="changePageSize(3)" [value]="3">3</button>
+      <button class="button" (click)="changePageSize(4)" value="4">4</button>
+    </div>
+  </div>
+</div>
