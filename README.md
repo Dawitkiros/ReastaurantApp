@@ -1,4 +1,4 @@
-# ReastaurantApp
+# RestaurantApp
 
 Restaurant App is a web application designed for managing restaurant orders and menus. It has two types of users: admin and user. Admin has full access to the system while the user has restricted access.
 
